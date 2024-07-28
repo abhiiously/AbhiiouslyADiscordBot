@@ -29,11 +29,3 @@ jobs:
         context: .
         push: true
         tags: abhiiously/abhiiously.io:latest
-
-    - name: Deploy to Unraid
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.UNRAID_USER }}@${{ secrets.UNRAID_HOST }} "
-        docker pull abhiiously/abhiiously.io:latest &&
-        docker stop abhiiously_bot &&
-        docker rm abhiiously_bot &&
-        docker run -d --name abhiiously_bot --env DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} abhiiously/abhiiously.io:latest"
