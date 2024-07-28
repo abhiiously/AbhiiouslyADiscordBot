@@ -27,12 +27,12 @@ jobs:
       with:
         context: .
         push: true
-        tags: yourusername/abhiiously.io:latest
+        tags: abhiiously/abhiiously.io:latest
 
     - name: Deploy to Unraid
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.UNRAID_USER }}@${{ secrets.UNRAID_HOST }} "
-        docker pull yourusername/abhiiously.io:latest &&
+        docker pull abhiiously/abhiiously.io:latest &&
         docker stop abhiiously_bot &&
         docker rm abhiiously_bot &&
-        docker run -d --name abhiiously_bot --env-file .env yourusername/abhiiously.io:latest"
+        docker run -d --name abhiiously_bot --env-file .env abhiiously/abhiiously.io:latest"
