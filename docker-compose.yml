@@ -1,0 +1,10 @@
+version: '3'
+services:
+  abhiiously:
+    image: yourusername/abhiiously.io
+    container_name: abhiiously_bot
+    environment:
+      - TOKEN=${DISCORD_TOKEN}
+    volumes:
+      - .env:/usr/src/app/.env
+    restart: always
