@@ -4,7 +4,6 @@
 
 // Import the discord.js module
 const { Client, GatewayIntentBits } = require('discord.js');
-require('dotenv').config(); // Load environment variables from .env file
 
 // Create a new Discord client
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
@@ -22,4 +21,4 @@ client.on('messageCreate', message => {
 });
 
 // Log in to Discord with your app's token
-client.login(process.env.TOKEN);
+client.login(process.env.DISCORD_TOKEN);

@@ -35,4 +35,4 @@ jobs:
         docker pull abhiiously/abhiiously.io:latest &&
         docker stop abhiiously_bot &&
         docker rm abhiiously_bot &&
-        docker run -d --name abhiiously_bot --env-file .env abhiiously/abhiiously.io:latest"
+        docker run -d --name abhiiously_bot --env DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} abhiiously/abhiiously.io:latest"
