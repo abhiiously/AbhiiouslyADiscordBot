@@ -23,6 +23,3 @@ client.on('messageCreate', message => {
 
 // Log in to Discord with your app's token
 client.login(process.env.DISCORD_TOKEN);
-
-
-// THIS IS A TEST LINE
