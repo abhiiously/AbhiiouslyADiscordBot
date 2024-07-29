@@ -14,4 +14,4 @@ RUN git clone https://github.com/abhiiously/AbhiiouslyADiscordBot.git .
 RUN npm install
 
 # Run the bot when the container launches
-CMD ["node", "./bot.js"]
+CMD ["node", "index.js"]
