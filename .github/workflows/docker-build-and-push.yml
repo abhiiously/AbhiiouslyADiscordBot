@@ -31,4 +31,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: abhiiously/abhiiously.io:${{ env.BUILD_NUMBER }}
+        tags: |
+          abhiiously/abhiiously.io:latest
+          abhiiously/abhiiously.io:${{ env.BUILD_NUMBER }}
