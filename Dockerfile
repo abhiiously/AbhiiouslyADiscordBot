@@ -1,24 +1,18 @@
 # Use an official Node.js runtime as a parent image
 FROM node:18
 
-# Set the working directory in the container to /config
-WORKDIR /config
+# Set the working directory in the container
+WORKDIR /app
 
-# Install git in the container
-RUN apt-get update && apt-get install -y git
+# Copy the package.json and package-lock.json (if available)
+COPY package*.json ./
 
-# Copy the local code to the container's work directory
-COPY . /config
-
-# Optional: If you have dependencies listed in a package.json file, install them
+# Install Node.js dependencies defined in package.json
 RUN npm install
 
-# Copy entrypoint script and give execution rights
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# Copy the rest of your bot's source code into the container
+COPY . .
 
-# Set the entrypoint script to run when the container starts
-ENTRYPOINT ["/entrypoint.sh"]
-
+# The container starts with the Node.js application
 # Optional: Set default command, for example, to start your Node.js application
 CMD ["node", "index.js"]
