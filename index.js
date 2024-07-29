@@ -4,6 +4,7 @@
 
 // Import the discord.js module
 const { Client, GatewayIntentBits } = require('discord.js');
+require('dotenv').config(); // Load environment variables from .env file
 
 // Create a new Discord client
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });

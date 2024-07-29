@@ -1,20 +1,17 @@
-# Use the official Node.js image.
-# https://hub.docker.com/_/node
+# Use the official Node.js image
 FROM node:18
 
-# Create and change to the app directory.
-WORKDIR .
+# Set the working directory
+WORKDIR /config
 
-# Copy application dependency manifests to the container image.
-# A wildcard is used to ensure both package.json AND package-lock.json are copied.
-# Copying this separately prevents re-running npm install on every code change.
-COPY package*.json ./
+# Install git
+RUN apt-get update && apt-get install -y git
 
-# Install production dependencies.
-RUN npm install
+# Copy the initialization script
+COPY init-and-run.sh /init-and-run.sh
 
-# Copy local code to the container image.
-COPY . /config
+# Make the script executable
+RUN chmod +x /init-and-run.sh
 
-# Run the web service on container startup.
-CMD [ "node", "index.js" ]
+# Set the command to run the initialization script
+CMD ["/init-and-run.sh"]
