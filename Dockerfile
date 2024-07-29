@@ -14,11 +14,11 @@ COPY . /config
 RUN npm install
 
 # Copy entrypoint script and give execution rights
-COPY entrypoint.sh entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint script to run when the container starts
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Optional: Set default command, for example, to start your Node.js application
 CMD ["node", "index.js"]
