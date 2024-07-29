@@ -1,7 +1,7 @@
 version: '3'
 services:
   abhiiously:
-    image: abhiiously/abhiiously.io:latest
+    image: abhiiously/abhiiously.io
     container_name: abhiiously.io
     environment:
       - TOKEN=${DISCORD_TOKEN}
