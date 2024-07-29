@@ -16,11 +16,5 @@ RUN npm install
 # Copy local code to the container image.
 COPY . .
 
-# Set the configuration directory as an environment variable
-ENV CONFIG_DIR=/config
-
-# Create a symlink from the working directory to the /config directory
-RUN ln -s /usr/src/app $CONFIG_DIR
-
 # Run the web service on container startup.
 CMD [ "node", "index.js" ]
