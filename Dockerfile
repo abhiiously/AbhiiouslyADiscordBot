@@ -1,19 +1,17 @@
 # Use an official Node.js runtime as a parent image
 FROM node:18
 
+# Install git
+RUN apt-get update && apt-get install -y git
+
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (if available)
-COPY package.json /app
-COPY package-lock.json /app
+# Clone the repository
+RUN git clone https://github.com/abhiiously/AbhiiouslyADiscordBot.git .
 
-# Install Node.js dependencies defined in package.json
+# Install any needed packages specified in package.json
 RUN npm install
 
-# Copy the rest of your bot's source code into the container
-COPY . .
-
-# The container starts with the Node.js application
-# Optional: Set default command, for example, to start your Node.js application
-CMD ["node", "index.js"]
+# Run the bot when the container launches
+CMD ["node", "./bot.js"]
