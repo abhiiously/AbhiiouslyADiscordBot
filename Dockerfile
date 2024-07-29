@@ -3,7 +3,7 @@
 FROM node:18
 
 # Create and change to the app directory.
-WORKDIR /config
+WORKDIR .
 
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
