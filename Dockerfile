@@ -21,4 +21,4 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Optional: Set default command, for example, to start your Node.js application
-CMD ["node", "your-app.js"]
+CMD ["node", "index.js"]
