@@ -6,5 +6,5 @@ services:
     environment:
       - TOKEN=${DISCORD_TOKEN}
     volumes:
-      - /mnt/user/appdata/abhiiously.io:/config
+      - /mnt/user/appdata/abhiiously.io:/app
     restart: always
