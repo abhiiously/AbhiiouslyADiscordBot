@@ -3,26 +3,19 @@
 # Function to update from GitHub
 update_from_github() {
     echo "Checking for updates..."
-    git fetch
-    if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
-        echo "Updates found. Pulling changes..."
-        git pull
-        npm install
-        echo "Update completed."
+    if [ -d ".git" ]; then
+        git fetch
+        git reset --hard origin/main  # or your default branch name
+        git clean -fd
     else
-        echo "Already up to date."
+        git clone https://github.com/abhiiously/AbhiiouslyADiscordBot.git .
     fi
+    npm install
+    echo "Update completed."
 }
 
-# Check if the repository exists
-if [ ! -d "/app/.git" ]; then
-    echo "Cloning repository for the first time..."
-    git clone https://github.com/abhiiously/AbhiiouslyADiscordBot.git .
-    npm install
-else
-    echo "Repository already exists. Checking for updates..."
-    update_from_github
-fi
+# Always update from GitHub when container starts
+update_from_github
 
 # Run the bot
 node index.js
